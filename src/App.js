@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState } from "react";
+import { Router, Link } from "@reach/router";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-           Qué hay de nuez, compas?
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Clip
-          </a>
-        </header>
-      </div>
-    );
-  }
+import Index from "./pages";
+import About from "./pages/about";
+import logo from "./logo.svg";
+import "./App.css";
+
+export default function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Link className="App-header-anchor" to="/">
+          Home
+        </Link>
+        <Link className="App-header-anchor" to="/about">
+          About
+        </Link>
+        <Router>
+          <Index path="/" />
+          <About path="/about" />
+        </Router>
+      </header>
+    </div>
+  );
 }
-
-export default App;
